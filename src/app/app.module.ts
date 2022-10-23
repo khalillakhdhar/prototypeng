@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/pages/login/login.component';
@@ -11,6 +13,13 @@ import { ListprodComponent } from './components/pages/listprod/listprod.componen
 import { PanierComponent } from './components/pages/panier/panier.component';
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+
+import { initFirebaseBackend } from './shared/services/auth-utils';
+import { environment } from 'src/environments/environment';
+initFirebaseBackend(environment.firebaseConfig);
+
 
 @NgModule({
   declarations: [
@@ -26,7 +35,12 @@ import { FooterComponent } from './components/template/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
